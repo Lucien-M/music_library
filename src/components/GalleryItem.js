@@ -7,7 +7,8 @@ function GalleryItem(props) {
     width: "25vw",
     height: "20vh",
     border: "1px solid black",
-    margin: "2px"
+    margin: "2px",
+    position: "relative"
   };
 
   const detailStyle = {
@@ -15,6 +16,7 @@ function GalleryItem(props) {
     height: "20vh",
     border: "1px solid black",
     margin: "2px",
+    position: "relative",
     backgroundImage: `url(${props.item.artworkUrl100})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
@@ -32,7 +34,7 @@ function GalleryItem(props) {
 
   const detailView = () => {
     return (
-      <div>
+      <div style={detailStyle}>
         <h2>{props.item.trackName}</h2>
         <h3>{props.item.collectionName}</h3>
         <h4>{props.item.primaryGenreName}</h4>
@@ -43,9 +45,9 @@ function GalleryItem(props) {
 
   return (
     <div onClick={() => setView(!view)} style={{ display: "inline-block" }}>
-      {/* This simple ternary shows the simple view when 'view' is false! */}
       {view ? detailView() : simpleView()}
     </div>
   );
 }
+
 export default GalleryItem;
